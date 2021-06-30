@@ -1,0 +1,22 @@
+Question1:
+
+Bad XML
+Create an RDD of Post objects where each Post is a valid row of XML from
+the Cross-Validated (stats.stackexchange.com) allPosts data set.
+
+Return the total number of XML rows that started with <row that were subsequently 
+rejected during your processing. 
+
+** Note that the text is unicode, and contains non-ASCII characters. 
+You may need to re-encode to UTF-8 (depending on your XML parser)
+
+Question2:
+
+Look to see if there is a relationship between the number of times the post was 
+upvoted minus the number of times it was downvoted, so it is a measure of 
+how much a post was liked. We'd expect posts with higher number of favorites to 
+have better scores, since they're both measurements of how good the post is.
+
+Let's aggregate post by the number of favorites, and find the average score for 
+each number of favorites. Do this for the lowest 50 number of favorites.
+
