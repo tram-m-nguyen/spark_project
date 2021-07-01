@@ -71,7 +71,3 @@ all_posts_fav_score = all_posts_lines.filter(lambda line: line.strip().startswit
 									.map(lambda x: (x[0], x[1][0] / x[1][1]))\
 									.sortByKey()\
 									.take(50)
-
-
-
-	
