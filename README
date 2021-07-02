@@ -1,6 +1,4 @@
-Question1:
-
-Bad XML
+Question 1 - Bad XML: 
 Create an RDD of Post objects where each Post is a valid row of XML from
 the Cross-Validated (stats.stackexchange.com) allPosts data set.
 
@@ -10,8 +8,8 @@ rejected during your processing.
 ** Note that the text is unicode, and contains non-ASCII characters. 
 You may need to re-encode to UTF-8 (depending on your XML parser)
 
-Question2:
 
+Question 2 - Favorites and Scores:
 Look to see if there is a relationship between the number of times the post was 
 upvoted minus the number of times it was downvoted, so it is a measure of 
 how much a post was liked. We'd expect posts with higher number of favorites to 
@@ -19,4 +17,29 @@ have better scores, since they're both measurements of how good the post is.
 
 Let's aggregate post by the number of favorites, and find the average score for 
 each number of favorites. Do this for the lowest 50 number of favorites.
+
+
+Question 3 - Answer percentage:
+Investigate the correlation between a user's reputation and the kind of posts 
+they make. For the 99 users with the highest reputation, single out posts which 
+are either questions or answers and look at the percentage of these posts that 
+are answers: (answers / (answers + questions)).
+
+Return a tuple of their user ID and this fraction.
+
+You should also return (-1, fraction) to represent the case where you average 
+over all users (so you will return 100 entries total).
+
+
+Question 4 - First Question: 
+We'd expect the first question a user asks to be indicative of their future 
+behavior. We'll dig more into that in the next problem, but for now let's see 
+the relationship between reputation and how long it took each person to ask 
+their first question.
+
+For each user that asked a question, find the difference between when their 
+account was created (CreationDate for the User) and when they asked their 
+first question (CreationDate for their first question). Return this time 
+difference in days (round down, so 2.7 days counts as 2 days) for the 
+100 users with the highest reputation, in the form (UserId, Days).
 

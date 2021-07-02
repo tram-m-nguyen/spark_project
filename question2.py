@@ -1,7 +1,7 @@
 from pyspark import SparkContext
 sc = SparkContext("local[*]", "temp")
 
-# to create an RDD from file
+# Posts RDD
 all_posts_lines = sc.textFile("file:///home/tnguyen/projects/spark/STATS_DATA/allPosts/*.xml")
 all_posts_lines.count()
 
