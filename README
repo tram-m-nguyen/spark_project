@@ -43,3 +43,14 @@ first question (CreationDate for their first question). Return this time
 difference in days (round down, so 2.7 days counts as 2 days) for the 
 100 users with the highest reputation, in the form (UserId, Days).
 
+Question 5 - Identify Veterans:
+It can be interesting to think about what factors influence a user to remain 
+active on the site over a long period of time. In order not to bias the results 
+towards older users, we'll define a time window between 100 and 150 days after 
+account creation. If the user has made a post in this time, we'll consider them
+active and well on their way to being veterans of the site; if not, they are 
+inactive and were likely brief users.
+
+Let's see if there are differences between the first ever question posts of 
+"veterans" vs. "brief users". For each group separately, average the score, 
+views, number of answers, and number of favorites of the users' first question.
