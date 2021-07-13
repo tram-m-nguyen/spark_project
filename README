@@ -1,3 +1,8 @@
+## Access StackOverflow Data
+Full data access here: https://archive.org/details/stackexchange
+
+There are three sub-folders, allUsers, allPosts, and allVotes.
+
 Question 1 - Bad XML: 
 Create an RDD of Post objects where each Post is a valid row of XML from
 the Cross-Validated (stats.stackexchange.com) allPosts data set.
