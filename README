@@ -54,3 +54,30 @@ inactive and were likely brief users.
 Let's see if there are differences between the first ever question posts of 
 "veterans" vs. "brief users". For each group separately, average the score, 
 views, number of answers, and number of favorites of the users' first question.
+
+
+Question 6 - Identify Veterans Full
+Same as question 5, but will use the full Stack Exchange data set. 
+
+
+Question 7 - Word2vec
+Let's see how good a Word2Vec model we can train using the tags of each Stack 
+Exchange post as documents (this uses the full data set). Use the implementation 
+of Word2Vec from Spark ML (this will require using DataFrames) to return a list 
+of the top 25 closest synonyms to "ggplot2" and their similarity score in tuple 
+format ("string", number).
+
+Question 8 - Classification
+We'd like to see if we can predict the tags of a question from its body text. 
+Instead of predicting specific tags, we will instead try to predict if a 
+question contains one of the top ten most common tags.
+
+To this end, we have separated out a train and a test set from the original data. 
+The training and tests sets were downloaded with the stats data at the beginning 
+of the notebook. 
+
+Return a list of your predictions, sorted by the question's Id. 
+This sorting is very important, as our grader expects the results to be 
+submitted in a particular order. These predictions should be 0 if the question 
+isn't expected to have a tag in the top ten, and 1 if it is.
+

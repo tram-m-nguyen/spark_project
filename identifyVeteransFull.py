@@ -10,16 +10,9 @@ from xml import etree
 sc = SparkContext("local[*]", "temp")
 
 ###### Users and Posts RDD
-all_users_lines = sc.textFile("file:///home/tnguyen/projects/spark/spark-stats-data/allUsers/*.xml")
-all_posts_lines = sc.textFile("file:///home/tnguyen/projects/spark/STATS_DATA/allPosts/*.xml")
+posts_lines_full = sc.textFile("file:///home/tnguyen/projects/spark/spark-stats-data/allPosts/*.xml")
+users_lines_full = sc.textFile("file:///home/tnguyen/projects/spark/spark-stats-data/allUsers/*.xml")
 
-### Posts
-post = (namedtuple('post', ['userid_of_p', 'p_info']))
-
-#post info
-p_info = (namedtuple('p_info', ['p_type', 'p_CreatedDate', 
-                                    'score', 'view_ct', 
-                                    'ans_ct', 'fav_ct']))
 
 def parse_post_toIdVet(row):
     """
@@ -51,11 +44,11 @@ def parse_post_toIdVet(row):
                           ans_ct, fav_ct))) 
 
 
-all_posts = (all_posts_lines.filter(lambda x: x.strip().startswith('<row'))
+all_posts = (posts_lines_full.filter(lambda x: x.strip().startswith('<row'))
                 .map(parse_post_toIdVet)
                 .filter(lambda post: post is not None)
                 .cache()
-)
+)                          
 
 # Working in DF
 all_post_df = all_posts.toDF()
@@ -82,11 +75,6 @@ firstQ_post_df = (post_q_df.withColumn("1stQ_date",F.first("postCreated").over(w
                  )
 firstQ_post_df = firstQ_post_df.drop("postCreated")
 
-u_info = (all_users_lines.filter(lambda line: line.strip().startswith('<row'))
-                         .map(get_user)
-                         .filter(lambda user: user is not None)
-        )
-
 
 #### Users 
 user_tup = namedtuple('user_tup', ['userid', 'actCreatedDate'])
@@ -107,6 +95,12 @@ def get_user(row):
     
     else:
         return user_tup(userid, actCreatedDate) 
+
+
+u_info = (users_lines_full.filter(lambda line: line.strip().startswith('<row'))
+                         .map(get_user)
+                         .filter(lambda user: user is not None)
+        )
 
 ### Working with DF
 u_info_df = u_info.toDF()
