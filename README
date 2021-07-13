@@ -61,7 +61,7 @@ Same as question 5, but will use the full Stack Exchange data set.
 
 
 Question 7 - Word2vec
-Let's see how good a Word2Vec model we can train using the tags of each Stack 
+Let's see how good a Word2Vec model we can train using the tags of eaidch Stack 
 Exchange post as documents (this uses the full data set). Use the implementation 
 of Word2Vec from Spark ML (this will require using DataFrames) to return a list 
 of the top 25 closest synonyms to "ggplot2" and their similarity score in tuple 
